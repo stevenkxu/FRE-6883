@@ -3,7 +3,7 @@
 Group consisting of Steven, Xiongan, Zhitong, Lisa, and Ning
 
 ## Tasks and deadlines
-### Pull earnings dates and values from Bloomberg for S&P500 stocks:
+### ~~Pull earnings dates and values from Bloomberg for S&P500 stocks:~~ Done
 Xiongan, End-of-day 12/4
 - Calculate Surprise
 - Sort Surprise into Beat, Meet, Miss
