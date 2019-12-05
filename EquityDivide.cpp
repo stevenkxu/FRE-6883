@@ -53,6 +53,20 @@ Group EquityDivide::divide_group() const{
             ans[2].push_back(surprise_vec[i].second);
         }
     }
+	// Proposed alternative that classifies miss, meet, beat as <0%, <5%, > 5%;; may require reformat of csvs:
+	
+	//for (int i = 0; i < n; i++) {
+	//	double surprise = surprise_vec[i].first;
+	//	if (surprise < 0.0) {
+	//		ans[0].push_back(surprise_vec[i].second);
+	//	}
+	//	else if (surprise < .05) {
+	//		ans[1].push_back(surprise_vec[i].second);
+	//	}
+	//	else {
+	//		ans[2].push_back(surprise_vec[i].second);
+	//	}
+	//}
     return ans;
 }
 
