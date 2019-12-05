@@ -17,7 +17,7 @@ typedef string Ticker;
 typedef string Date;
 typedef pair<Ticker, Date> TickerInfo;
 typedef vector<vector<TickerInfo> > Group;
-
+//vector<vector<pair<string, string>>
 class EquityDivide{
 protected:
     vector<pair<double, TickerInfo> > surprise_vec;

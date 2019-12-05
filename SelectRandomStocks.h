@@ -19,7 +19,7 @@ public:
 	void ShuffleStocks();
 	// must pass an empty vector/group that can be filled by use of this get function
 	// Emphasis on EMPTY group
-	void Get30StocksPerGroup(Group &vec);
+	void Get30StocksPerGroup(Group &chosen_stocks);
 };
 
 

@@ -12,8 +12,12 @@ void StockShuffler::ShuffleStocks() {
 	shuffle(stock_groups[2].begin(), stock_groups[2].end(), default_random_engine);
 }
 
-void Get30StocksPerGroup() {
-
+void StockShuffler::Get30StocksPerGroup(Group &chosen_stocks) {
+	for (int i = 0; i <= 2; i++) {
+		for (int j = 0; j < 30; j++) {
+			chosen_stocks[i][j] = stock_groups[i][j];
+		}
+	}
 }
 // will probably put all of this into a class wrapper
 // right now, this is a placeholder: these numbers will be the size of each of the groups in Group
