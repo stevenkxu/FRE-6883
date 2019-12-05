@@ -8,7 +8,7 @@ Xiongan, End-of-day 12/4
 - Calculate Surprise
 - Sort Surprise into Beat, Meet, Miss
 Status summary: 
-Beat, meet, miss are in 3 separate csv files with earnings surprise as percentage for each row. *As far as I can tell* the only thing we care about from each of these stocks is what group they are categorized in. For the next part, I suggest that we load each of these csv/xlsx files into a separate data structure (possibly a set or a vector) and have those persist for the duration of the program. 
+Beat, meet, miss are in 3 separate csv files with earnings surprise as percentage for each row. *As far as I can tell* the only thing we care about from each of these stocks is what group they are categorized in and when their earnings reporting date was. For the next part, I suggest that we load each of these csv/xlsx files into a separate data structure (possibly a set or a vector) and have those persist for the duration of the program. 
 
 ### Sample 30 stocks from each of 3 groups (90 total):
 Steven and Zhitong, Friday afternoon 12/6
