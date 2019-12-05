@@ -7,11 +7,13 @@ Group consisting of Steven, Xiongan, Zhitong, Lisa, and Ning
 Xiongan, End-of-day 12/4
 - Calculate Surprise
 - Sort Surprise into Beat, Meet, Miss
+Status summary: 
+Beat, meet, miss are in 3 separate csv files with earnings surprise as percentage for each row. *As far as I can tell* the only thing we care about from each of these stocks is what group they are categorized in. For the next part, I suggest that we load each of these csv/xlsx files into a separate data structure (possibly a set or a vector) and have those persist for the duration of the program. 
 
 ### Sample 30 stocks from each of 3 groups (90 total):
 Steven and Zhitong, Friday afternoon 12/6
  - Sample 30 stocks from each of 3 groups randomly
- - Download 61 days of data for SPY and the sampled stocks around the earnings date
+ - Download 61 days of data for SPY and the sampled stocks around the earnings date. Cache these so the download only needs to be done once for each stock.
  - Prepare a loop that will do this, and the following block, 30 times.
  
  ### Calculate statistics from collected data:
