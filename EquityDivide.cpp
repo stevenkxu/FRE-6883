@@ -19,10 +19,10 @@ EquityDivide::EquityDivide(const string& path){
     ifstream file;
     file.open(path);
     
-    auto&& id = read_col<vector<Ticker>, Ticker>(file, 0);
-    auto&& date = read_col<vector<Date>, Date>(file, 1);
-    auto&& actual = read_col<vector<double>, double>(file, 2);
-    auto&& est = read_col<vector<double>, double>(file, 3);
+    vector<Ticker> id = read_col<vector<Ticker>, Ticker>(file, 0);
+    vector<Date> date = read_col<vector<Date>, Date>(file, 1);
+    vector<double> actual = read_col<vector<double>, double>(file, 2);
+    vector<double> est = read_col<vector<double>, double>(file, 3);
     
     file.close();
     
