@@ -24,6 +24,7 @@ protected:
 public:
     EquityDivide(const string& path);
     Group divide_group() const;
+    //every group returned by this method will be in the order "miss, meet, beat"
 };
 
 

@@ -8,15 +8,15 @@ int main() {
 	//cout << divided_stocks[0][1].first << endl;
 	StockShuffler shuffler = StockShuffler(divided_stocks);
 	
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 12; i++) {
+		//anything done within this loop will be done on a different set of 30 stocks!
 		//This code will randomly output 30 stocks!
 		Group empty_stocks(3);
 		shuffler.ShuffleStocks();
 		shuffler.Get30StocksPerGroup(empty_stocks);
-
 		// This is how you can get the ticker of the 30 stocks! Right now, the functionality is to cout them, but this can be used as a string input for the next part of the program
 		for (int j = 0; j < 30; j++) {
-			cout << empty_stocks[0][j].first << " ";
+			cout << empty_stocks[0][j].first << " " << empty_stocks[0][j].second << endl;
 		}
 
 
