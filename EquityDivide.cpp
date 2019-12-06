@@ -11,6 +11,7 @@
 #include <string>
 #include <fstream>
 #include <cmath>
+#include <algorithm>
 #include "tools.h"
 #include "EquityDivide.h"
 using namespace std;
@@ -39,7 +40,7 @@ Group EquityDivide::divide_group() const{
     Group ans(3);
     size_t n = surprise_vec.size();
     int group_size = static_cast<int>(n) / 3;
-    for(int i=0;i<n;++i){
+    for(int i=0;i<n;++i) {
         //Miss group
         if(i < group_size){
             ans[0].push_back(surprise_vec[i].second);

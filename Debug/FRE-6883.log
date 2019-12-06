@@ -1,0 +1,16 @@
+﻿  EquityDivide.cpp
+C:\Users\steve\source\repos\FRE-6883\EquityDivide.cpp(31,18): warning C4018: '<': signed/unsigned mismatch
+C:\Users\steve\source\repos\FRE-6883\EquityDivide.cpp(43,18): warning C4018: '<': signed/unsigned mismatch
+C:\Users\steve\source\repos\FRE-6883\tools.h(39,1): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(440): message : see declaration of 'strtok'
+C:\Users\steve\source\repos\FRE-6883\EquityDivide.cpp(23): message : see reference to function template instantiation 'T1 read_col<std::vector<Ticker,std::allocator<Ticker>>,Ticker>(std::ifstream &,int)' being compiled
+          with
+          [
+              T1=std::vector<Ticker,std::allocator<Ticker>>
+          ]
+C:\Users\steve\source\repos\FRE-6883\tools.h(51,1): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(440): message : see declaration of 'strtok'
+  Main01.cpp
+  SelectRandomStocks.cpp
+  Generating Code...
+  FRE-6883.vcxproj -> C:\Users\steve\source\repos\FRE-6883\Debug\FRE-6883.exe

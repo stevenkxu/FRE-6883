@@ -11,11 +11,16 @@
 
 #include <vector>
 #include <string>
+#include <cstdio>
+#include <cstring>
+#include <stdio.h>
+#include <string.h>
 #include <sstream>
 #include <fstream>
 using namespace std;
 
 template <typename T1, typename T2>
+
 T1 read_col(ifstream& file, int data_col){
     file.clear();
     // point read pointer at beginning of file
@@ -31,12 +36,12 @@ T1 read_col(ifstream& file, int data_col){
     
     while(getline(file, line)){
         col = 0;
-        ptr = strtok((char *)line.c_str(), ",");
+        ptr = strtok( (char *)line.c_str(), ",");
         while(ptr){
             if (strcmp(ptr, "")){
                 if (col == data_col && row >= 1)
                 {
-                    std::stringstream ss;
+                    stringstream ss;
                     ss << std::string(ptr);
                     ss >> item;
                     ans.push_back(item);
