@@ -2,6 +2,8 @@
 
 Group consisting of Steven, Xiongan, Zhitong, Lisa, and Ning
 
+Note: create windows and mac staging environments so we can actually test the code as it's done
+
 ## Tasks and deadlines
 ### ~~Pull earnings dates and values from Bloomberg for S&P500 stocks:~~ Done
 Xiongan, End-of-day 12/4
@@ -13,8 +15,9 @@ Beat, meet, miss are in 3 separate csv files with earnings surprise as percentag
 
 ### Sample 30 stocks from each of 3 groups (90 total):
 Steven and Zhitong, Friday afternoon 12/6
- - Sample 30 stocks from each of 3 groups randomly
- - Download 61 days of data for SPY and the sampled stocks around the earnings date. Cache these so the download only needs to be done once for each stock.
+ - Sample 30 stocks from each of 3 groups randomly (probably done)
+ - Download 61 days of data for SPY and the sampled stocks around the earnings date. Cache these so the download only needs to be done once for each stock. OR: download all 500 at once. 
+ -- How to do? map of <string, vector> where string is ticker and vector is price at date. Either send request to Yahoo in one block, or send 60+ requests per stock to make sure that we get 60 data points
  - Prepare a loop that will do this, and the following block, 30 times.
  
  ### Calculate statistics from collected data:
