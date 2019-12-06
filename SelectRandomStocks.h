@@ -14,7 +14,7 @@ private:
 	Group stock_groups;
 public:
 	//should be initialized with a Group as given earlier
-	StockShuffler(Group stock_groups_) {stock_groups = stock_groups_};
+	StockShuffler(Group stock_groups_) { stock_groups = stock_groups_; };
 	// only shuffles the stocks! does not return them!
 	void ShuffleStocks();
 	// must pass an empty vector/group that can be filled by use of this get function
