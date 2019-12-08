@@ -7,15 +7,17 @@
 #include "ExtractData.h"
 #include <vector>
 #include "tools.h"
+#include "Stock.h"
 #include "EquityDivide.h"
 #include <map>
 
 using namespace std;
 
 typedef map<string,vector<string>> Map;
+typedef map<string,Stock> StockMap;
 
 // number = 0 means miss, 1 is meet, 2is
-Map SelectData(Group group, int number)
+Map SelectData(Group group, int number, StockMap &StockList)
 {
     ifstream fin;
     ofstream fout;
@@ -30,6 +32,7 @@ Map SelectData(Group group, int number)
     }
     fin.close();
     
+    
     remove("Results.csv");
     vector<string> Tickers;
     vector<string> AnnounceDate;
@@ -39,23 +42,25 @@ Map SelectData(Group group, int number)
     // Tickers.push_back("^GSPC");
     
     string date;
-    int dateindex;
+    int dateindex = 0;
+    
+    //group[number].size()
     for(int i = 0; i < group[number].size(); i++)
     {
-        cout <<group[number][i].first << "   " << group[number][i].second << endl;
         date = group[number][i].second;
         Tickers.push_back(group[number][i].first);
         for(int j = 30; j <=100 ; j++)
         {
-            cout << Tradedate[j] << endl;
             if(Tradedate[j] == date)
             {
                 dateindex = j-32;
-                cout << "==="<<date << endl;
+                cout << "======="<<date << endl;
                 j = 120;
             }
         }
         PreStartIndex.push_back(dateindex);
+        Stock tempstock(dateindex) ;
+        StockList[group[number][i].first] = tempstock;
     }
     
     Extract(Tickers);
@@ -82,10 +87,12 @@ Map SelectData(Group group, int number)
                 getline(fin, Date, ','), getline(fin, Open, ','), getline(fin, High, ','), getline(fin, Low, ','), getline(fin, Close, ','), getline(fin, AdjClose, ','), getline(fin, Volume);
                 temvector.push_back(AdjClose);
             }
+            StockList[Tickers[i]].AdjClose = temvector;
             Price.insert(make_pair(Tickers[i],temvector));
             i++;
         }
     }
+    
     fin.close();
     
     /*
@@ -101,6 +108,29 @@ Map SelectData(Group group, int number)
      */
     
     return Price;
+}
+
+vector<string> getSPY()
+{
+    ifstream fin;
+    ofstream fout;
+    vector<string> Tickers;
+    Tickers.push_back("^GSPC");
+    remove("Results.csv");
+    
+    Extract(Tickers);
+    
+    string Date, Open, High, Low, Close, Volume;
+    fin.open("Results.csv");
+    string AdjClose;
+    vector<string> tempvecotr;
+
+    while (getline(fin, Date, ','), getline(fin, Open, ','), getline(fin, High, ','), getline(fin, Low, ','), getline(fin, Close, ','), getline(fin, AdjClose, ','), getline(fin, Volume))
+    {
+        if(AdjClose != "Adj Close")
+            tempvecotr.push_back(AdjClose);
+    }
+    return tempvecotr;
 }
 
 
