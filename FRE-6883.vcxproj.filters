@@ -18,21 +18,36 @@
     <ClCompile Include="EquityDivide.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Main01.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SelectRandomStocks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ExtractData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Calculation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="EquityDivide.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Selectdata.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SelectRandomStocks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Stock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="tools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtractData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
