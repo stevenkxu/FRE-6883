@@ -57,7 +57,7 @@ void plotChat(vector<double> beat, vector<double> meet, vector<double> miss){
         printf("press enter to continue...");
         getchar();
         
-        //delete 3 pointers of 3 files
+        //delete 3 files
         remove(tempDataFileBeat);
         remove(tempDataFileMeet);
         remove(tempDataFileMiss);
