@@ -12,7 +12,7 @@
 #include <string>
 using namespace std;
 
-void plotChat(vector<double> beat, vector<double> meet, vector<double> miss){
+void plotChart(vector<double> beat, vector<double> meet, vector<double> miss){
     FILE *gnuplotPipe, *tempDataFile;
     size_t dataSize = beat.size();
     const char *tempDataFileBeat = "beatData";
