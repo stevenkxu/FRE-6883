@@ -29,7 +29,7 @@ void plotChat(vector<double> beat, vector<double> meet, vector<double> miss){
         
         //open beatData file
         tempDataFile = fopen(tempDataFileBeat,"w");
-        for (int i=0; i<= dataSize; i++) {
+        for (int i=0; i< dataSize; i++) {
             x1 = i-30;
             y1 = beat[i];
             fprintf(tempDataFile,"%lf %lf\n",x1,y1);
@@ -38,7 +38,7 @@ void plotChat(vector<double> beat, vector<double> meet, vector<double> miss){
         
         //open meetData file
         tempDataFile = fopen(tempDataFileMeet,"w");
-        for (int i=0; i <= dataSize; i++) {
+        for (int i=0; i < dataSize; i++) {
             x2 = i-30;
             y2 = meet[i];
             fprintf(tempDataFile,"%lf %lf\n",x2,y2);
@@ -47,7 +47,7 @@ void plotChat(vector<double> beat, vector<double> meet, vector<double> miss){
         
         //open missData file
         tempDataFile = fopen(tempDataFileMiss,"w");
-        for (int i=0; i <= dataSize; i++) {
+        for (int i=0; i < dataSize; i++) {
             x3 = i-30;
             y3 = miss[i];
             fprintf(tempDataFile,"%lf %lf\n",x3,y3);
@@ -57,7 +57,7 @@ void plotChat(vector<double> beat, vector<double> meet, vector<double> miss){
         printf("press enter to continue...");
         getchar();
         
-        //delete 3 temporary files
+        //delete 3 pointers of 3 files
         remove(tempDataFileBeat);
         remove(tempDataFileMeet);
         remove(tempDataFileMiss);
