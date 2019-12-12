@@ -183,23 +183,27 @@ int Extract(vector<string> symbolList)
             const char * cookies = sCookies.c_str();
             curl_easy_setopt(handle, CURLOPT_COOKIE, cookies);   // Only needed for 1st stock
             curl_easy_setopt(handle, CURLOPT_URL, cURL);
+
+/*
             fp = fopen(resultfilename, "ab");
-            curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, write_data);
+            curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, write_data2);
             curl_easy_setopt(handle, CURLOPT_WRITEDATA, fp);
             result = curl_easy_perform(handle);
             fclose(fp);
             
-            /* Check for errors */
+            // Check for errors 
             if (result != CURLE_OK)
             {
-                /* if errors have occurred, tell us what is wrong with 'result'*/
+                // if errors have occurred, tell us what is wrong with 'result'
                 fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(result));
                 return 1;
             }
+
+            */
             curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, write_data2);
             curl_easy_setopt(handle, CURLOPT_WRITEDATA, (void *)&data);
             result = curl_easy_perform(handle);
-            
+            cout << result << "this is the result" << endl;
             /* Check for errors */
             if (result != CURLE_OK)
             {
@@ -212,9 +216,10 @@ int Extract(vector<string> symbolList)
             sData.str(data.memory);
             string line;
             getline(sData, line);
-           /* cout << line << endl;
-            for (; getline(sData, line); )
-                cout << line << endl;*/
+            //cout << << endl;
+            cout << line << endl;
+            //for (; getline(sData, line); )
+            //    cout << line << endl;
             itr++;
         }
         free(data.memory);
