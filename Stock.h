@@ -6,14 +6,20 @@
 #include <vector>
 using namespace std;
 
+
 class Stock
 {
 public:
     int StartDateIndex;
+    string Ticker;
     vector<string> AdjClose;
-    /*
     string StartDate;
     string EndDate;
+    string AnnounceDate;
+    double EstEPS;
+    double ActEPS;
+    double Surprise;
+    /*
     vector<double> AdjClose;
     vector<double> Ret;
     vector<double> AR;
@@ -28,5 +34,6 @@ public:
     Stock(int StartDateIndex_){StartDateIndex = StartDateIndex_;}
 
 };
+
 
 #endif /* Stock_hpp */
