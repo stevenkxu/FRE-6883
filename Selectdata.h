@@ -117,14 +117,13 @@ vector<string> getSPY()
     vector<string> Tickers;
     Tickers.push_back("^GSPC");
     remove("Results.csv");
-    
+
     Extract(Tickers);
     
     string Date, Open, High, Low, Close, Volume;
     fin.open("Results.csv");
     string AdjClose;
     vector<string> tempvecotr;
-
     while (getline(fin, Date, ','), getline(fin, Open, ','), getline(fin, High, ','), getline(fin, Low, ','), getline(fin, Close, ','), getline(fin, AdjClose, ','), getline(fin, Volume))
     {
         if(AdjClose != "Adj Close")
