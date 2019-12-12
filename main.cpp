@@ -13,6 +13,7 @@ using namespace std;
 int main()
 {
     // read EPS file
+    
     string path = "EPS.csv";
     EquityDivide test1(path);
     Group group1 = test1.divide_group();
@@ -59,6 +60,73 @@ int main()
     //cout << StockList["ABT"].StartDateIndex << endl;
 
     //Why on God's green Earth would you ever ame a data structure 'return'???
+
+    Matrix Result;
+    
+    for (int i = 0; i < 3 ; i ++){
+        Vector AAR;
+        Vector AARSD;
+        Container temp1;
+        Container temp2;
+        Vector CAAR;
+        Vector CAARSD;
+        
+        
+        for (int j = 0; j < 30 ;j++){
+            StockShuffler shuffle = StockShuffler(group1);
+            Group group2(3);
+            shuffle.ShuffleStocks();
+            shuffle.Get30StocksPerGroup(group2);
+            
+            vector<string> SPY = getSPY();
+            cout << SPY.size();
+            StockMap StockList;
+            Stock tempstock(0);
+            StockList["SPY"] = tempstock;
+            StockList["SPY"].AdjClose = SPY;
+            
+            Map Price = SelectData(group2, j, StockList);
+            //for (int k = 0; k < 4;k++){
+            Return abnormalReturn;
+            abnormalReturn=calculationOfReturn(abnormalReturn, StockList, Price, SPY);
+            Vector averageAbnormalReturn;
+            averageAbnormalReturn = calculationOfAAR(abnormalReturn);
+            temp1[j] =averageAbnormalReturn;
+            AAR = operator+ (AAR ,averageAbnormalReturn);
+            
+            Vector culmulativeAbnormalReturn;
+            culmulativeAbnormalReturn = calculationOfCAAR(averageAbnormalReturn);
+            temp2 [j] =culmulativeAbnormalReturn;
+            CAAR = operator+(CAAR, culmulativeAbnormalReturn);
+            
+           
+                
+                
+            //}
+        }
+        
+        temp1 = operator-( temp1, AAR);
+        temp1 = operator ^(temp1,temp1);
+        AARSD = operator+(temp1, AARSD);
+        AARSD = squareRootOperator(AARSD);
+        
+        temp2 = operator-( temp2, CAAR);
+        temp2 = operator ^(temp2,temp2);
+        CAARSD = operator+(temp2,CAARSD);
+        CAARSD = squareRootOperator(CAARSD);
+        Result[i][0] = AAR;
+        Result[i][1] = AARSD;
+        Result[i][2] = CAAR;
+        Result[i][3] = CAARSD;
+                   
+        
+    }
+    
+    for (int i = 0; i <60;i++){
+        cout<< Result[0][0][i]<<endl;
+    }
+    /*
+
     Return abnormalReturn;
     Return abnormalReturn2;
     Return abnormalReturn3;
@@ -66,23 +134,23 @@ int main()
     abnormalReturn2=calculationOfReturn(abnormalReturn2, StockList, Price2, SPY);
     abnormalReturn3=calculationOfReturn(abnormalReturn, StockList, Price3, SPY);
     
-    AAR averageAbnormalReturn;
-    AAR averageAbnormalReturn2;
-    AAR averageAbnormalReturn3;
+    Vector averageAbnormalReturn;
+    Vector averageAbnormalReturn2;
+    Vector averageAbnormalReturn3;
     
     averageAbnormalReturn = calculationOfAAR(abnormalReturn);
     averageAbnormalReturn2 = calculationOfAAR(abnormalReturn2);
     averageAbnormalReturn3 = calculationOfAAR(abnormalReturn3);
     
-    CAAR culmulativeAbnormalReturn;
-    CAAR culmulativeAbnormalReturn2;
-    CAAR culmulativeAbnormalReturn3;
+    Vector culmulativeAbnormalReturn;
+    Vector culmulativeAbnormalReturn2;
+    Vector culmulativeAbnormalReturn3;
     
     culmulativeAbnormalReturn = calculationOfCAAR(averageAbnormalReturn);
     culmulativeAbnormalReturn2 = calculationOfCAAR(averageAbnormalReturn2);
     culmulativeAbnormalReturn3 = calculationOfCAAR(averageAbnormalReturn3);
     
     cout << averageAbnormalReturn[4] << endl;
-    
+    */
     
 }
