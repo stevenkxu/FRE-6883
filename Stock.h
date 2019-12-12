@@ -30,10 +30,12 @@ public:
     vector<double> getAR() { return AR; }
     vector<double> getCAR() { return CAR; }
 */
-    Stock(){StartDateIndex = 0;}
-    Stock(int StartDateIndex_){StartDateIndex = StartDateIndex_;}
+    Stock() { StartDateIndex = 0; }
+    Stock(int StartDateIndex_) { StartDateIndex = StartDateIndex_; }
 
 };
 
 
+
 #endif /* Stock_hpp */
+
