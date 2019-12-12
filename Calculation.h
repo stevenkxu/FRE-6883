@@ -1,10 +1,5 @@
-//
-//  Calculation.h
-//  ExtractData
-//
-//  Created by 蔡宁 on 2019/12/9.
-//  Copyright © 2019 Song Tang. All rights reserved.
-//
+
+//HAHAHAHAHAHA!! We made it !!!!    LisaChen
 
 #ifndef Calculation_h
 #define Calculation_h
@@ -20,8 +15,15 @@
 #include "Selectdata.h"
 
 typedef map<string,vector<double>> Return;
-typedef vector <double> AAR;
-typedef vector <double> CAAR;
+//typedef vector <double> AAR;
+//typedef vector <double> CAAR;
+//typedef vector <double> averageAAR;
+//typedef vector <double> averageCAAR;
+typedef vector <double> Vector;
+typedef vector<vector<vector<double>>> Matrix;
+typedef vector<vector<double>> Container;
+
+
 
 Return calculationOfReturn (Return abnormalReturn, StockMap &StockList, Map &StockList2, vector <string> spy ){
     
@@ -56,10 +58,10 @@ Return calculationOfReturn (Return abnormalReturn, StockMap &StockList, Map &Sto
 
 }
 
-AAR calculationOfAAR(Return abnormalReturn){
-    AAR calculation(61,0);
+Vector calculationOfAAR(Return abnormalReturn){
+    Vector calculation(60,0);
     for (Return:: iterator it = abnormalReturn.begin(); it != abnormalReturn.end();it ++){
-        for ( int i = 0; i < 61 ; i ++){
+        for ( int i = 0; i < 60 ; i ++){
             calculation[i] += it->second[i]/30;
         }
         
@@ -68,14 +70,56 @@ AAR calculationOfAAR(Return abnormalReturn){
     
 }
 
-CAAR calculationOfCAAR(AAR calculation){
-    CAAR calculationCAAR(61,0);
+Vector calculationOfCAAR(Vector calculation){
+    Vector calculationCAAR(60,0);
     calculationCAAR[0] = calculation [0];
     for(int i = 0; i < 60; i ++){
         calculationCAAR[i + 1] = calculationCAAR[i] + calculation[i + 1];
     }
     return calculationCAAR;
 }
+
+Vector operator +(Vector &V1, const Vector &V2){
+    for (int i  = 0; i <60; i++){
+        V1[i] = V1[i] + V2[i]/30;
+    }
+    return V1;
+}
+
+Vector operator+( Container &V1, Vector &V2){
+    for (int i = 0; i < 60; i++){
+        for (int j = 0; j< 30; j++){
+            V2[j] = V2[j]+V1[j][i];
+        }
+    }
+    return V2;
+}
  
+Container operator -(Container &V1, const Vector &V2){
+    for (int i  = 0; i <60; i++){
+        for (int j = 0; j < 30; j++){
+            V1[j][i] = V1[j][i] - V2[i];
+        }
+    }
+    return V1;
+}
+
+Container operator ^(Container &V1, Container &V2){
+    for (int i  = 0; i <60; i++){
+        for (int j = 0; j <30; j++){
+            V1[j][i] = V2[j][i] * V2[j][i];
+        }
+    }
+    return V1;
+}
+
+Vector squareRootOperator(Vector &V1){
+    for (int i  = 0; i <60; i++){
+        V1[i] = sqrt(V1[i]);
+    }
+    return V1;
+    
+}
+
 #endif /* Calculation_h */
 
