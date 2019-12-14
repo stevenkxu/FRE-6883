@@ -18,7 +18,6 @@ int main()
     
     vector<string> TickerList;
     
-    cout<<12<<endl;
     // get sp500
     vector<string> SPY;
     vector<string> DATE;
@@ -29,14 +28,14 @@ int main()
     StockMap StockList;
     
     
-    cout << 100 << endl;
+    cout << "Calculating SPY Returns..." << endl;
     
     // read EPS file
     string path = "EPS.csv";
     EquityDivide test1(path, StockList,TickerList,DATE);
     Group group1 = test1.divide_group();
     
-    cout << 200 << endl;
+    cout << "Sorting by Beat, Meet, Miss..." << endl;
     
     //randomly chosse 30 stocks of 3 groups, so group[0] means miss.
     //StockShuffler shuffle = StockShuffler(group1);
@@ -45,7 +44,7 @@ int main()
     //shuffle.Get30StocksPerGroup(group2);
     //Extract(StockList, "2019-01-10", "2019-08-20");
     Extract(StockList);
-    cout << 300 << endl;
+    cout << "Downloading Data..." << endl;
     //for(int i =0 ; i<=60;i++)
     //    cout << "++///++"<<StockList["A"].AdjClose[i] << endl;
     
@@ -58,12 +57,12 @@ int main()
     //
     //for(auto it = SPY.begin(); it != SPY.end(); ++it)
     //    cout << *it << endl;
-    cout << 400 << endl;
+    cout << "Performing Final Calculations..." << endl;
     
     Matrix Result(3,vector<vector<double>>(4)) ;
 
     Result = finalCalculation( group1,spy, StockList);
-    cout << 500 << endl;
+    cout << "Generating options..." << endl;
   
     int opt;
     bool cont = TRUE;
@@ -81,16 +80,24 @@ int main()
             cout << "Input ticker:";
             cin >> userticker;
             cout << endl;
-            if (StockList.count(userticker)) {
+            if (userticker == "^GSPC") {
+                for (int i = 0; i <= spy.size(); i++) {
+                    cout << DATE[i] << "   " << SPY[i] << endl;
+                }
+            }
+            else if (StockList.count(userticker)) {
                 int sdate = StockList[userticker].StartDateIndex;
                 int kount = 0;
                 for (auto itr = StockList[userticker].AdjClose.begin(); itr != StockList[userticker].AdjClose.end(); itr++) {
-                    cout << *itr << endl;
+                    cout << DATE[sdate + kount] << "   " << *itr << endl;
                     kount++;
                 }
-                
             }
-            break;
+            else {
+                cout << "Data for this stock was not downloaded." << endl;
+            }
+                
+           break;
         case 2:
             cout << "Input ticker:";
             cin >> userticker;
@@ -108,7 +115,7 @@ int main()
             break;
         case 3:
             cout << "Choose group: " << endl;
-            cout << " 0 for miss, 1 for beat, 2 for meet" << endl;
+            cout << " 0 for miss, 1 for meet, 2 for beat" << endl;
             int groupselect;
             cin >> groupselect;
             //printstats(groupselect);
@@ -120,7 +127,11 @@ int main()
 
             for (int i = 0; i < 60; i++) {
                 cout << setprecision(0) << i - 30 << " ";
-                cout << setprecision(7) << Result[groupselect][0][i] << " " << Result[groupselect][1][i] << " " << Result[groupselect][2][i] << " " << Result[groupselect][3][i] << endl;
+                cout << setprecision(7) 
+                    << Result[groupselect][0][i] << " " 
+                    << Result[groupselect][1][i] << " " 
+                    << Result[groupselect][2][i] << " " 
+                    << Result[groupselect][3][i] << endl;
             }
 
             
